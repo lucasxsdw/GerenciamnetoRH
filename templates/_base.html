@@ -12,7 +12,110 @@
       font-family: 'Segoe UI', sans-serif;
     }
 
-    body {
+    /*pessoas detail */
+
+.quadro {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.quadro h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.quadro p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  color: #34495e;
+}
+
+.btn-voltar, .btn-excluir {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-voltar {
+  background-color: #3498db;
+  color: #fff;
+  margin-top: 1rem;
+}
+
+.btn-voltar:hover {
+  background-color: #2980b9;
+}
+
+.btn-excluir {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-excluir:hover {
+  background-color: #c0392b;
+}
+
+
+/*pessoas detal  */
+
+/*pessoas list  */
+.lista-funcionarios {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.lista-funcionarios h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.lista-funcionarios ul {
+  list-style: none;
+  padding: 0;
+}
+
+.lista-funcionarios li {
+  background-color: #ecf0f1;
+  margin: 0.5rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.lista-funcionarios li:hover {
+  background-color: #d0d7de;
+}
+
+.lista-funcionarios a {
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.lista-funcionarios a:hover {
+  color: #0077c2;
+}
+
+
+/*pessoas detal  */
+
+
+body {
       display: flex;
       flex-direction: column;
       height: 100vh;
@@ -81,6 +184,105 @@
         height: calc(100vh - 160px);
       }
     }
+
+/*form cadastro*/
+.formulario-cadastro {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.formulario-cadastro h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.formulario-cadastro form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario-cadastro form p {
+  margin-bottom: 1rem;
+}
+
+.formulario-cadastro label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  display: block;
+  color: #34495e;
+}
+
+.formulario-cadastro input,
+.formulario-cadastro select,
+.formulario-cadastro textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.formulario-cadastro button {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: #00a8f7;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formulario-cadastro button:hover {
+  background-color: #007fc4;
+}
+
+
+/*form cadastro*/
+
+/*form add dept*/
+.form-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-styled {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-fields {
+  margin-bottom: 15px;
+}
+
+input[type="submit"].btn-submit {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"].btn-submit:hover {
+  background-color: #0056b3;
+}
+
+
+/*form add depto*/
   </style>
 </head>
 <body>

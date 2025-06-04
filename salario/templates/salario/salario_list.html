@@ -3,7 +3,7 @@
     <h1>Lista de salarios</h1>
     <ul>
         {% for salario in salarios %}
-            <li><a href="{% url 'salario_detail' salario.pk %}">{{ salario.valor }}</a></li>
+            <li><a href="{% url 'salario_detail' salario.pk %}">{{ salario.salario }}</a></li>
         {% endfor %}
     </ul>
 

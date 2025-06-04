@@ -1,14 +1,15 @@
 {% extends '_base.html' %}
 
-
 {% block content %}
-  <form method="post" action="">
-    {% csrf_token %}
+  <div class="form-container">
+    <form method="post" action="" class="form-styled">
+      {% csrf_token %}
+      
+      <div class="form-fields">
+        {{ form }}
+      </div>
 
-
-     {{ form }}
-     <input type="submit" value="Enviar">
-
-  </form>
-
+      <input type="submit" value="Enviar" class="btn-submit">
+    </form>
+  </div>
 {% endblock %}

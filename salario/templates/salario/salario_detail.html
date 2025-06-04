@@ -1,7 +1,7 @@
 {% extends '_base.html' %}
 {% block content %}
-    <h1>{{ pessoa.nome }}</h1>
-    <p>Salario: {{ salario.valor }}</p>
+
+    <p>Salario: {{ salario.salario }}</p>
     <!--<p>Departamento: {{ pessoa.departamento }}</p>-->
     <!--<p>Data de Contratação: {{ pessoa.data_contratacao }}</p>-->
     <a href="{% url 'salario_list' %}">Voltar para lista</a>

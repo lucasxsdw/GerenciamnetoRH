@@ -1,13 +1,18 @@
 {% extends '_base.html' %}
 {% block content %}
-    <h1>{{ pessoa.nome }}</h1>
-    <p>Cargo: {{ pessoa.cargo }}</p>
-    <p>Departamento: {{ pessoa.departamento }}</p>
-    <p>Data de Contratação: {{ pessoa.data_contratacao }}</p>
-    <a href="{% url 'pessoa_list' %}">Voltar para lista</a>
-    <br>
+  <div class="quadro">
+    <h1>Nome: {{ pessoa.nome }}</h1>
+    <p><strong>Cargo:</strong> {{ pessoa.cargo }}</p>
+    <p><strong>Departamento:</strong> {{ pessoa.departamento }}</p>
+    <p><strong>Data de Contratação:</strong> {{ pessoa.data_contratacao }}</p>
+    <p><strong>Salário:</strong> {{ pessoa.valor_salario }}</p>
+    
+    <a class="btn-voltar" href="{% url 'pessoa_list' %}">Voltar para lista</a>
+    <br><br>
+
     <form method="post" action="{% url 'excluir_pessoa' pessoa.id %}" onsubmit="return confirm('Tem certeza que deseja excluir este funcionário?')">
         {% csrf_token %}
-        <button type="submit">Excluir Funcionário</button>
+        <button class="btn-excluir" type="submit">Excluir Funcionário</button>
     </form>
+  </div>
 {% endblock %}

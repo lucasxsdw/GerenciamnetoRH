@@ -1,10 +1,13 @@
 {% extends '_base.html' %}
 {% block content %}
+  <div class="lista-funcionarios">
     <h1>Lista de Funcionários</h1>
     <ul>
-        {% for pessoa in pessoas %}
-            <li><a href="{% url 'pessoa_detail' pessoa.pk %}">{{ pessoa.nome }}</a></li>
-        {% endfor %}
+      {% for pessoa in pessoas %}
+        <li><a href="{% url 'pessoa_detail' pessoa.pk %}">{{ pessoa.nome }}</a></li>
+      {% empty %}
+        <li>Nenhum funcionário cadastrado.</li>
+      {% endfor %}
     </ul>
-
+  </div>
 {% endblock %}
