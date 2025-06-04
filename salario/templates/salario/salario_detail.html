@@ -1,0 +1,13 @@
+{% extends '_base.html' %}
+{% block content %}
+    <h1>{{ pessoa.nome }}</h1>
+    <p>Salario: {{ salario.valor }}</p>
+    <!--<p>Departamento: {{ pessoa.departamento }}</p>-->
+    <!--<p>Data de Contratação: {{ pessoa.data_contratacao }}</p>-->
+    <a href="{% url 'salario_list' %}">Voltar para lista</a>
+    <br>
+    <form method="post" action="{% url 'excluir_salario' salario.id %}" onsubmit="return confirm('Tem certeza que deseja excluir este salario?')">
+        {% csrf_token %}
+        <button type="submit">Excluir salario</button>
+    </form>
+{% endblock %}

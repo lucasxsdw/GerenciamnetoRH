@@ -1,0 +1,9 @@
+{% extends '_base.html' %}
+{% block content %}
+    <h1>{{ depto.nome }}</h1>
+    <p>Nome: {{ depto.nome }}</p>
+    <p>Departamento: {{ pessoa.departamento }}</p>
+    <p>Data de Contratação: {{ pessoa.data_contratacao }}</p>
+    <a href="{% url 'depto_list' %}">Voltar para lista</a>
+   
+{% endblock %}

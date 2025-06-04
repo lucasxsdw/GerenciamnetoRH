@@ -1,0 +1,13 @@
+{% extends '_base.html' %}
+{% block content %}
+    <h1>{{ pessoa.nome }}</h1>
+    <p>Cargo: {{ pessoa.cargo }}</p>
+    <p>Departamento: {{ pessoa.departamento }}</p>
+    <p>Data de Contratação: {{ pessoa.data_contratacao }}</p>
+    <a href="{% url 'pessoa_list' %}">Voltar para lista</a>
+    <br>
+    <form method="post" action="{% url 'excluir_pessoa' pessoa.id %}" onsubmit="return confirm('Tem certeza que deseja excluir este funcionário?')">
+        {% csrf_token %}
+        <button type="submit">Excluir Funcionário</button>
+    </form>
+{% endblock %}
