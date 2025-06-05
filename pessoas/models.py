@@ -1,4 +1,6 @@
 from django.db import models
+from salario.models import Salario 
+
 
 
 #criando um relacionamento muitos para um 
@@ -7,7 +9,7 @@ class Departamento(models.Model):
 
     def __str__(self):
         return self.nome
-    
+
 
 class Cargo(models.Model):
     nome = models.CharField(max_length=100)
@@ -20,7 +22,7 @@ class Pessoa(models.Model):
     nome = models.CharField(max_length=100) 
     cargo = models.ForeignKey(Cargo, on_delete=models.CASCADE)
     departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
-    valor_salario = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    salario = models.ManyToManyField(Salario)
     data_contratacao = models.DateField()
     
 

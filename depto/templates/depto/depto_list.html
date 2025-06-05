@@ -1,9 +1,13 @@
 {% extends '_base.html' %}
 {% block content %}
+  <div class="lista-departamentos">
     <h1>Lista de Departamentos</h1>
     <ul>
-        {% for depto in departamentos %}
-            <li><a href="{% url 'depto_detail' depto.pk %}">{{ depto.nome }}</a></li>
-        {% endfor %}
+      {% for depto in departamentos %}
+        <li><a href="{% url 'depto_detail' depto.pk %}">{{ depto.nome }}</a></li>
+      {% empty %}
+        <li>Nenhum departamento cadastrado.</li>
+      {% endfor %}
     </ul>
+  </div>
 {% endblock %}
