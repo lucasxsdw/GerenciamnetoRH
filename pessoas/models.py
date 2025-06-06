@@ -22,10 +22,21 @@ class Pessoa(models.Model):
     nome = models.CharField(max_length=100) 
     cargo = models.ForeignKey(Cargo, on_delete=models.CASCADE)
     departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
-    salario = models.ManyToManyField(Salario)
+    salario = models.ManyToManyField(Salario, through='PessoaSalario')  # Agora sim
     data_contratacao = models.DateField()
     
+
 
     def __str__(self):
         return self.nome    
     
+class PessoaSalario(models.Model):
+    pessoa = models.ForeignKey(Pessoa, verbose_name="Pessoa", on_delete=models.CASCADE)
+    salarios = models.ForeignKey(Salario, verbose_name="Salario", on_delete=models.CASCADE)
+    ano = models.SmallIntegerField(null=True, blank=True)
+    mes = models.SmallIntegerField(verbose_name="Mes")
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['pessoa', 'ano', 'mes'], name='unique_salario_mensal')
+        ]
