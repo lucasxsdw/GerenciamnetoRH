@@ -3,16 +3,12 @@
 
 {% block content %}
 <div class="formulario-cadastro">
-<form method="post" action="">
-    {% csrf_token %}
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Salvar</button>
+</form>
 
-
-     {{ form }}
-    <input type="number" name="ano" placeholder="Ano" required>
-     <input type="number" name="mes" placeholder="Mês" required>
-     <input type="submit" value="Enviar">
-    
-  </form>
 
 </div>
   

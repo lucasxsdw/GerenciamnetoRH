@@ -1,13 +1,15 @@
-from django.forms import ModelForm
-from django.db import models
-from .models import Pessoa
+from django import forms
+from .models import Pessoa, Salario
 
+class PessoaForm(forms.ModelForm):
+    salario = forms.ModelChoiceField(queryset=Salario.objects.all(), required=True)
+    ano = forms.IntegerField(required=True)
+    mes = forms.IntegerField(required=True)
 
-class PessoaForm(ModelForm):
-     
-     class Meta:
+    class Meta:
         model = Pessoa
-        fields = '__all__'
+        fields = ['nome', 'cargo', 'departamento', 'data_contratacao']
+
 
 
 #aqui vai os froms de adicao dos dados do usuario 

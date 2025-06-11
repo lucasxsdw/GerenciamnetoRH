@@ -1,6 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from .models import Pessoa
+
+from salario.models import Salario
+from .models import Pessoa, PessoaSalario
 from .forms import PessoaForm
 from django.contrib import messages
 
@@ -9,20 +11,25 @@ def pessoa_list(request):
     return render(request, 'pessoas/pessoa_list.html', {'pessoas': pessoas})
 #cria um novo registro
 
+from django.shortcuts import render, redirect
+from .forms import PessoaForm
+from .models import PessoaSalario
+
 def add(request):
-    print("entrou def")
-    if request.method == 'POST':
-        form = PessoaForm(request.POST)
-        if form.is_valid():
-            form.save()
-            print("chegou")
-            return HttpResponseRedirect('/pessoas/')
-    else:
-        form = PessoaForm()
-   
+    form = PessoaForm(request.POST or None)
     
-    print("chegou aqui")
-    return render(request, 'pessoas/form.html', {'form':form})
+    if request.method == 'POST' and form.is_valid():
+        pessoa = form.save()
+        PessoaSalario.objects.create(
+            pessoa=pessoa,
+            salario=form.cleaned_data['salario'],
+            ano=form.cleaned_data['ano'],
+            mes=form.cleaned_data['mes']
+        )
+        return redirect('/pessoas/')
+    
+    return render(request, 'pessoas/form.html', {'form': form})
+
 
 def editar_pessoa(request):
     pessoa = Pessoa.objects.get(pk=id)
