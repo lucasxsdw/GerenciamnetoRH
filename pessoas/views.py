@@ -49,7 +49,7 @@ def excluir_pessoa(request, id):
             excluirPessoa = Pessoa.objects.get(pk=id)
             excluirPessoa.delete()
             messages.success(request, "Salario excluída com sucesso!")
-            return render(request, 'pessoas/pessoa_detail.html', {'pessoa': excluirPessoa})
+            return render(request, 'pessoas/pessoa_list.html', {'pessoa': excluirPessoa})
         except Pessoa.DoesNotExist:
             print("pessoa nao existe ")
     else:

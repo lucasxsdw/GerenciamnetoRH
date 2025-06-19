@@ -6,7 +6,7 @@
       {% for pessoa in pessoas %}
         <li><a href="{% url 'pessoa_detail' pessoa.pk %}">{{ pessoa.nome }}</a></li>
       {% empty %}
-        <li>Nenhum funcionário cadastrado.</li>
+      <li>O funcionário {{ pessoa.nome }} foi excluido.</li>
       {% endfor %}
     </ul>
   </div>

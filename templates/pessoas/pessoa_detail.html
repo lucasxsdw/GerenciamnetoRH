@@ -5,7 +5,16 @@
     <p><strong>Cargo:</strong> {{ pessoa.cargo }}</p>
     <p><strong>Departamento:</strong> {{ pessoa.departamento }}</p>
     <p><strong>Data de Contratação:</strong> {{ pessoa.data_contratacao }}</p>
-    <p><strong>Salário:</strong> {{ pessoa.valor_salario }}</p>
+
+   
+    <ul>
+      {% for item in pessoa.salario.all %}
+        <p> <strong>Salário(s):</strong>R$ {{ item.valor }}</p>
+      {% empty %}
+        <li>Sem salário cadastrado</li>
+      {% endfor %}
+    </ul>
+
     
     <a class="btn-voltar" href="{% url 'pessoa_list' %}">Voltar para lista</a>
     <br><br>
