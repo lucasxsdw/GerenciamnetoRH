@@ -1,11 +1,12 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-
+from django.contrib.auth.decorators import login_required
 from salario.models import Salario
 from .models import Pessoa, PessoaSalario
 from .forms import PessoaForm
 from django.contrib import messages
 
+@login_required
 def pessoa_list(request):
     pessoas = Pessoa.objects.all()
     return render(request, 'pessoas/pessoa_list.html', {'pessoas': pessoas})
@@ -15,6 +16,7 @@ from django.shortcuts import render, redirect
 from .forms import PessoaForm
 from .models import PessoaSalario
 
+@login_required
 def add(request):
     form = PessoaForm(request.POST or None)
     
@@ -30,7 +32,7 @@ def add(request):
     
     return render(request, 'pessoas/form.html', {'form': form})
 
-
+@login_required
 def editar_pessoa(request):
     pessoa = Pessoa.objects.get(pk=id)
     if request.method == 'POST':
@@ -42,7 +44,8 @@ def editar_pessoa(request):
     else:
         form = PessoaForm(instance=pessoa)
     return render(request, 'pessoas/form.html', {'form':form})
-    
+
+@login_required 
 def excluir_pessoa(request, id):
     if request.method == 'POST':
         try:
@@ -55,7 +58,7 @@ def excluir_pessoa(request, id):
     else:
         print("FOI GET")
 
-
+@login_required
 def pessoa_detail(request, pk):
     pessoa = get_object_or_404(Pessoa, pk=pk)
     return render(request, 'pessoas/pessoa_detail.html', {'pessoa': pessoa})

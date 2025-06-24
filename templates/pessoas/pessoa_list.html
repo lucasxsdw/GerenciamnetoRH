@@ -3,11 +3,18 @@
   <div class="lista-funcionarios">
     <h1>Lista de Funcionários</h1>
     <ul>
-      {% for pessoa in pessoas %}
+      
+
+    {% for pessoa in pessoas %}
         <li><a href="{% url 'pessoa_detail' pessoa.pk %}">{{ pessoa.nome }}</a></li>
-      {% empty %}
-      <li>O funcionário {{ pessoa.nome }} foi excluido.</li>
-      {% endfor %}
+    {% empty %}
+        <li>Nenhum funcionário encontrado.</li>
+    {% endfor %}
     </ul>
   </div>
+
+  <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Sair</button>
+</form>
 {% endblock %}
