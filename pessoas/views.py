@@ -5,6 +5,10 @@ from salario.models import Salario
 from .models import Pessoa, PessoaSalario
 from .forms import PessoaForm
 from django.contrib import messages
+from django.contrib.auth.decorators import permission_required
+from django.shortcuts import render, redirect
+from .forms import PessoaForm
+from .models import PessoaSalario
 
 @login_required
 def pessoa_list(request):
@@ -12,10 +16,8 @@ def pessoa_list(request):
     return render(request, 'pessoas/pessoa_list.html', {'pessoas': pessoas})
 #cria um novo registro
 
-from django.shortcuts import render, redirect
-from .forms import PessoaForm
-from .models import PessoaSalario
 
+@permission_required('pessoas.add_pessoa', raise_exception=True)
 @login_required
 def add(request):
     form = PessoaForm(request.POST or None)
@@ -32,19 +34,28 @@ def add(request):
     
     return render(request, 'pessoas/form.html', {'form': form})
 
+
+
+
+
+@permission_required('pessoas.change_pessoa', raise_exception=True)
 @login_required
-def editar_pessoa(request):
-    pessoa = Pessoa.objects.get(pk=id)
+def editar_pessoa(request, id):  
+    pessoa = get_object_or_404(Pessoa, pk=id)
+
     if request.method == 'POST':
-        form = PessoaForm(request.POST, instance=Pessoa)
+        form = PessoaForm(request.POST, instance=pessoa)  
         if form.is_valid():
             form.save()
-            print("chegou")
             return HttpResponseRedirect('/pessoas/')
     else:
         form = PessoaForm(instance=pessoa)
-    return render(request, 'pessoas/form.html', {'form':form})
 
+    return render(request, 'pessoas/form.html', {'form': form})
+
+
+
+@permission_required('pessoas.delete_pessoa', raise_exception=True)
 @login_required 
 def excluir_pessoa(request, id):
     if request.method == 'POST':
